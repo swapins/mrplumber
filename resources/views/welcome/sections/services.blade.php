@@ -6,14 +6,16 @@
         </div>
 
         <div class="row">
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+        @foreach($brands as $brand)
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mb-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <div class="icon text-center"><img src="{{$brand->logo}}" width="120px"/></div>
+              <h4><a target="_blank" href="{{$brand->url}}">{{$brand->brandName}}&trade;</a></h4>
+              <p>{{$brand->curatedText}}</p>
             </div>
           </div>
-
+        @endforeach
+        <!--
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
@@ -37,5 +39,6 @@
               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
             </div>
           </div>
+        -->
         </div>
       </div>

@@ -5,8 +5,8 @@
           <li><a class="nav-link scrollto" href="/#services">Brands</a></li>
           <li><a class="nav-link   scrollto" href="/#faq">FAQ</a></li>
           <li><a class="nav-link   scrollto" href="/#why-us">Why Us</a></li>
-          <!--<li><a class="nav-link scrollto" href="#team">Team</a></li>
-          -->
+          
+
           <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @foreach( $services as $serv)
@@ -26,6 +26,24 @@
         
         <li><a class="nav-link scrollto" href="/#skills">Projects</a></li>
         <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
+        @auth
+        <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+            <li><a href=""><i class="bi bi-door-closed-fill"></i>&nbsp;&nbsp;Dashboard</a></li>
+              <li>
+                <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a href="{{route('logout')}}" onclick="event.preventDefault();this.closest('form').submit();">
+                Logout
+                </a>
+                </form>
+              </li>
+            </ul>
+        </li>
+
+        
+        
+        @endauth
 
           <!--<li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
