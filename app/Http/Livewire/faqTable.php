@@ -2,15 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\contactForm;
+use App\Models\Faq;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
-use PowerComponents\LivewirePowerGrid\Detail;
 
-final class contactLeads extends PowerGridComponent
+final class faqTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -33,13 +32,10 @@ final class contactLeads extends PowerGridComponent
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
-
-            Detail::make()
-                ->view('components.detail') // views/components.detail.blade.php
-                ->options(['message' => 'hello world'])
-                ->showCollapseIcon(),
         ];
     }
+
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -52,11 +48,11 @@ final class contactLeads extends PowerGridComponent
     /**
     * PowerGrid datasource.
     *
-    * @return Builder<\App\Models\contactForm>
+    * @return Builder<\App\Models\Faq>
     */
     public function datasource(): Builder
     {
-        return contactForm::query();
+        return Faq::query();
     }
 
     /*
@@ -92,19 +88,16 @@ final class contactLeads extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('name')
+            ->addColumn('question')
 
            /** Example of custom column using a closure **/
-            ->addColumn('name_lower', function (contactForm $model) {
-                return strtolower(e($model->name));
+            ->addColumn('question_lower', function (Faq $model) {
+                return strtolower(e($model->question));
             })
 
-            ->addColumn('email')
-            ->addColumn('subject')
-            ->addColumn('message')
-            ->addColumn('read')
-            ->addColumn('created_at_formatted', fn (contactForm $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (contactForm $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('answer')
+            ->addColumn('created_at_formatted', fn (Faq $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn (Faq $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -124,27 +117,15 @@ final class contactLeads extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('NAME', 'name')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
+            Column::make('ID', 'id'),
 
-            Column::make('EMAIL', 'email')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('SUBJECT', 'subject')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('MESSAGE', 'message')
+            Column::make('QUESTION', 'question')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('READ', 'read')
-                ->toggleable(),
+            Column::make('ANSWER', 'answer')
+                ->sortable()
+                ->searchable(),
 
             
 
@@ -161,27 +142,26 @@ final class contactLeads extends PowerGridComponent
     */
 
      /**
-     * PowerGrid contactForm Action Buttons.
+     * PowerGrid Faq Action Buttons.
      *
      * @return array<int, Button>
      */
 
-  
+
     public function actions(): array
     {
        return [
-        //    Button::make('edit', 'Edit')
-        //        ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-        //        ->route('contact-form.edit', ['contact-form' => 'id']),
+           Button::make('edit', 'Edit')
+               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm inline-flex')
+               ->route('faqedit', ['faq' => 'id']),
 
            Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('contact_destroy', ['contact-form' => 'id'])
-               ->target('_self')
+               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm inline-flex')
+               ->route('faqdelete', ['faq' => 'id'])
                ->method('delete')
         ];
     }
-  
+
 
     /*
     |--------------------------------------------------------------------------
@@ -192,7 +172,7 @@ final class contactLeads extends PowerGridComponent
     */
 
      /**
-     * PowerGrid contactForm Action Rules.
+     * PowerGrid Faq Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -204,7 +184,7 @@ final class contactLeads extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($contact-form) => $contact-form->id === 1)
+                ->when(fn($faq) => $faq->id === 1)
                 ->hide(),
         ];
     }

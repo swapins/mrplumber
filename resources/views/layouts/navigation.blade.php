@@ -21,6 +21,26 @@
                         {{ __('Leads') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('faq')" :active="request()->routeIs('faq')">
+                        {{ __('FAQ') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('brands')" :active="request()->routeIs('brands')">
+                        {{ __('Brands') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('service_db')" :active="request()->routeIs('service_db')">
+                        {{ __('Services') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('seo')" :active="request()->routeIs('seo')">
+                        {{ __('SEO') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

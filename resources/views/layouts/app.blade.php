@@ -35,6 +35,18 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <footer
+            class="bg-blue-200 text-center dark:bg-neutral-700 lg:text-left shadow-lg">
+            <div class="p-4 text-center text-neutral-700 dark:text-neutral-200">
+                © 2023 Copyright:
+                <a
+                class="text-neutral-800 dark:text-neutral-400"
+                href="/"
+                >SP Managers Snd Bhd. Cyberjaya MY</a
+                >
+            </div>
+        </footer>
         <!-- Scripts -->
         
         <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
@@ -42,7 +54,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
                 crossorigin="anonymous"></script>
+                
         @livewireScripts
+        @livewireChartsScripts
         @powerGridScripts
        
     </body>

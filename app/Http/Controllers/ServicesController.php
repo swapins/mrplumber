@@ -35,4 +35,8 @@ class ServicesController extends Controller
         }
         
     }
+
+    public function db(){
+        return view('service_db');
+    }
 }
