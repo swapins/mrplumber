@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\services;
 use App\Models\cmsText;
 use App\Models\Brand;
+use App\Models\Faq;
 
 class ServicesController extends Controller
 {
@@ -13,7 +14,8 @@ class ServicesController extends Controller
         $services = services::all();
         $cmsText = cmsText::first();
         $brands = Brand::where('enable',1)->get();
-        return view('welcome.pages.home',compact('services','cmsText','brands'));
+        $faqs = Faq::all();
+        return view('welcome.pages.home',compact('services','cmsText','brands','faqs'));
 
     }
     
@@ -27,11 +29,14 @@ class ServicesController extends Controller
         }
         $services = services::all();
         $service = services::find($id);
+
+        $faqs = Faq::all();
+
         if ($service == null){
             return redirect('/');
         }
         else{
-            return view('welcome.pages.services',compact('services','service','cmsText','brands'));
+            return view('welcome.pages.services',compact('services','service','cmsText','brands','faqs'));
         }
         
     }

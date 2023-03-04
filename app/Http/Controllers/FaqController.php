@@ -22,13 +22,14 @@ class FaqController extends Controller
 
     public function edit(Request $request){
 
-       dd($request);
+       dd($request->input('faq'));
         return redirect()->back();
     }
 
     public function delete(Request $request){
 
-        dd($request);
-         return redirect()->back();
+        $id = $request->input('faq');
+        Faq::find($id)->delete();
+        return redirect()->back();
      }
 }

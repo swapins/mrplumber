@@ -5,5 +5,5 @@
     <img src="./welcome/assets/img/logo/mrlogo_white_txt.png" alt="" class="img-fluid">
 </a>
 @auth
-<button class="btn btn-sm btn-danger">Admin Mode</button>
+<a type="button" href="{{route('dashboard')}}" class="btn btn-sm btn-danger">Admin Mode</a>
 @endauth

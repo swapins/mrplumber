@@ -2,14 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Faq;
+use App\Models\Brand;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class faqTable extends PowerGridComponent
+final class brandsTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -35,8 +35,6 @@ final class faqTable extends PowerGridComponent
         ];
     }
 
-    
-
     /*
     |--------------------------------------------------------------------------
     |  Datasource
@@ -48,11 +46,11 @@ final class faqTable extends PowerGridComponent
     /**
     * PowerGrid datasource.
     *
-    * @return Builder<\App\Models\Faq>
+    * @return Builder<\App\Models\Brand>
     */
     public function datasource(): Builder
     {
-        return Faq::query();
+        return Brand::query();
     }
 
     /*
@@ -88,16 +86,21 @@ final class faqTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('question')
+            ->addColumn('brandName')
 
            /** Example of custom column using a closure **/
-            ->addColumn('question_lower', function (Faq $model) {
-                return strtolower(e($model->question));
+            ->addColumn('brandName_lower', function (Brand $model) {
+                return strtolower(e($model->brandName));
             })
 
-            ->addColumn('answer')
-            ->addColumn('created_at_formatted', fn (Faq $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Faq $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('logo' , function (Brand $model) {
+                return ("<img src='".e($model->logo)."' width='100px'/>");
+            })
+            ->addColumn('url')
+            ->addColumn('curatedText')
+            ->addColumn('enable')
+            ->addColumn('created_at_formatted', fn (Brand $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn (Brand $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -119,16 +122,26 @@ final class faqTable extends PowerGridComponent
         return [
             Column::make('ID', 'id'),
 
-            Column::make('QUESTION', 'question')
+            Column::make('BRANDNAME', 'brandName')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('ANSWER', 'answer')
+            Column::make('LOGO', 'logo')
                 ->sortable()
                 ->searchable(),
+
+            Column::make('URL', 'url')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('CURATEDTEXT', 'curatedText')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('ENABLE', 'enable')
+                ->toggleable(),
 
             
-
         ]
 ;
     }
@@ -142,27 +155,26 @@ final class faqTable extends PowerGridComponent
     */
 
      /**
-     * PowerGrid Faq Action Buttons.
+     * PowerGrid Brand Action Buttons.
      *
      * @return array<int, Button>
      */
 
-
+    /*
     public function actions(): array
     {
        return [
-        //    Button::make('edit', 'Edit')
-        //        ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm inline-flex')
-        //        ->route('faqedit', ['faq' => 'id']),
+           Button::make('edit', 'Edit')
+               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+               ->route('brand.edit', ['brand' => 'id']),
 
            Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm inline-flex')
-               ->route('faqdelete', ['faq' => 'id'])
-               ->target('_self')
+               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->route('brand.destroy', ['brand' => 'id'])
                ->method('delete')
         ];
     }
-
+    */
 
     /*
     |--------------------------------------------------------------------------
@@ -173,7 +185,7 @@ final class faqTable extends PowerGridComponent
     */
 
      /**
-     * PowerGrid Faq Action Rules.
+     * PowerGrid Brand Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -185,7 +197,7 @@ final class faqTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($faq) => $faq->id === 1)
+                ->when(fn($brand) => $brand->id === 1)
                 ->hide(),
         ];
     }
