@@ -2,9 +2,9 @@
         <div class="row">
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
             <div class="content">
-              <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3>
+              <h3>KEEP YOUR PLUMBING RUNNING AT PEAK EFFICIENCY<strong> Very Affordable!!</strong></h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              At Mr Plumber, our top priority is to make sure any plumbing service, repair, or installation that you are in need of is an easy process and never becomes a headache. Our Preferred Customer Maintenance Plan is a simple and inexpensive plan to make sure your home’s plumbing is always running at its peak efficiency.
               </p>
             </div>
             <div class="accordion-list">

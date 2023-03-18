@@ -2,80 +2,127 @@
 <html lang="en">
 
 <head>
-  @livewireStyles
-  @include('welcome.components.head')
+    @include('welcome.components.head')
 
-  <!-- =======================================================
-  * Template Name: Arsha - v4.10.0
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- =======================================================
+    * Template Name: SPM - v4.10.0
+    * Template URL:
+    * Author: swapin vidya
+    * License: /license/
+    ======================================================== -->
+    <!-- Livewire -->
+    @livewireStyles
 </head>
 
 <body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner"></div>
+    </div>
+    <!-- Spinner End -->
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center">
-        @include('welcome.components.logo')
+    <!-- Topbar Start -->
+    @include('welcome.components.topbar')
+    <!-- Topbar End -->
+
+    <!-- Navbar & Carousel Start -->
+    <div class="container-fluid position-relative p-0">
+        <!-- Nav -->
         @include('welcome.components.nav')
+        <!-- Nav End -->
+
+        <!-- carousel  -->
+        @include('welcome.components.carousel')
+        <!-- carousel End  -->
     </div>
-  </header><!-- End Header -->
+    <!-- Navbar & Carousel End -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>{{$cmsText->title}}</h1>
-            @auth
-              <livewire:hero />
-            @endauth
-
-          
-          <h2>{{$cmsText->subTitle}}
-            @auth
-            <livewire:herotwo/>
-            @endauth
-          </h2>
-          
-
-          <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="{{$cmsText->videourl}}" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-            @auth
-            <livewire:heroyoutube/>
-            @endauth
-          </div>
-
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="./welcome/assets/img/logo/bluelogo.png" class="img-fluid animated" alt="">
-        </div>
-      </div>
     </div>
-  </section>
-  <!-- End Hero -->
-  
-  <main id="main">
+    <!-- Full Screen Search End -->
+
+    <!-- Fullscreen banner -->
+    <div class="modal fade" id="bannerModel" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, 0.6);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <!-- <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div> -->
+                    <a href="#" type="button" data-bs-dismiss="modal">
+                        <img src="/newdesigin/img/banner/Blue.png" class="mx-auto d-block"  style = "height: auto;
+                        max-width: 75%;"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full screen banner End -->
+
+
+    <!-- Facts Start -->
+    @include('welcome.components.facts')
+    <!-- Facts Start -->
+
     @yield('main')
-  </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
+
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5 mb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel">
+                    @foreach($brands as $barnd)
+                        <img src="{{$barnd->logo}}" alt="">
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
+
+
+    <!-- Footer Start -->
     @include('welcome.components.footer')
-  </footer><!-- End Footer -->
+    <!-- Footer End -->
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  @livewireScripts
-  @include('welcome.components.scripts')
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-  
+
+    <!-- Livewire -->
+    @livewireScripts
+    <!-- JavaScript Libraries -->
+    @include('welcome.components.scripts')
+
+    <!-- Load banner -->
+    <script type="text/javascript">
+    $(window).on('load', function() {
+        $('#bannerModel').modal('show');
+    });
+    </script>
 
 
 
 </body>
+
 </html>

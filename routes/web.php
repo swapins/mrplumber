@@ -19,8 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',[ServicesController::class,'home']);
-Route::get('/services',[ServicesController::class,'index']);
+Route::get('/',[ServicesController::class,'home'])->name('home');
+Route::get('/about',[ServicesController::class,'about'])->name('about');
+Route::get('/brand',[ServicesController::class,'brand'])->name('brand');
+Route::get('/service',[ServicesController::class,'service'])->name('service');
+Route::get('/contact',[ServicesController::class,'contact'])->name('contact');
+Route::get('/quote',[ServicesController::class,'quote'])->name('quote');
 
 
 Route::get('/dashboard', function () {
@@ -33,12 +37,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/brandSites',[BrandController::class,'brandSites']);
+    Route::get('/brandimages',[BrandController::class,'brandImages']);
+    Route::get('/cleanbrandTable',[BrandController::class,'cleanbrandTable']);
+    Route::get('/getBlog',[BrandController::class,'getBlog']);
+    Route::get('/dbStatus',[BrandController::class,'dbStatus']);
 
     Route::get('/leads',[ContactFormController::class,'index'])->name('leads');
     Route::get('/faq',[FaqController::class,'index'])->name('faq');
     Route::get('/brands',[BrandController::class,'index'])->name('brands');
     Route::get('/service_db',[ServicesController::class,'db'])->name('service_db');
     Route::post('/savefaq',[FaqController::class,'save']);
+
     Route::get('/seo', function(){ return view('seo');})->name('seo');
 
     Route::delete('/faq_del',[FaqController::class,'delete'])->name('faqdelete');

@@ -44,7 +44,7 @@ class brandSeeder extends Seeder
             ],
             [
                 'brandName' => 'HINDWARE' ,
-                'logo' => './welcome/assets/img/brands/hindware.png' ,
+                'logo' => './welcome/assets/img/brands/Hindware.png' ,
                 'url' => 'https://hindware.com/',
                 'curatedText' => '',
                 'enable'=>true

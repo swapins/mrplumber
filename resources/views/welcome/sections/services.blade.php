@@ -2,7 +2,7 @@
 
         <div class="section-title">
           <h2>Brands we Deal</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>We Provide Service To These Brands.</p>
         </div>
 
         <div class="row">

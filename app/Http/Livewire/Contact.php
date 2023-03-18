@@ -4,14 +4,17 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\contactForm;
+use App\Models\services;
 
 class Contact extends Component
 {
     public contactForm $contact;
+    public $services;
 
     public function mount()
     {
         $this->contact = new contactForm;
+        $this->services = services::all();
     }
 
     protected $rules = [
@@ -24,7 +27,6 @@ class Contact extends Component
     public function save()
     {
         $this->validate();
-        
         $this->contact->save();
         session()->flash('message', true);
     }
