@@ -9,7 +9,7 @@
                         <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
                         <h1 class="mb-0">The Best Plumbing Solution With 10 Years of Experience</h1>
                     </div>
-                    <p class="mb-4">
+                    <p class="mb-4" style="text-align: justify;">
                         {{$cmsText->aboutUsText}}
                     </p>
                     <div class="row g-0 mb-3">

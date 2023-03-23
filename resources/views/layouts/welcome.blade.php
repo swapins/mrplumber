@@ -69,7 +69,7 @@
                     </div> -->
                     <a href="#" type="button" data-bs-dismiss="modal">
                         <img src="/newdesigin/img/banner/Blue.png" class="mx-auto d-block"  style = "height: auto;
-                        max-width: 75%;"/>
+                        max-width: 60%;"/>
                     </a>
                 </div>
             </div>

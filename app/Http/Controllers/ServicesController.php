@@ -38,7 +38,13 @@ class ServicesController extends Controller
         $brands = Brand::where('enable',1)->get();
         $ebrand = Brand::find($request->input('id'));
         $faqs = Faq::all();
-        return view('welcome.pages.brand',compact('services','cmsText','brands','faqs','ebrand'));
+
+        $id = $request->input('id');
+        if ($id == 0){
+            return view('welcome.pages.brandnew',compact('services','cmsText','brands','faqs','ebrand'));
+        } else{
+            return view('welcome.pages.brand',compact('services','cmsText','brands','faqs','ebrand'));
+        }
 
     }
 
@@ -49,7 +55,13 @@ class ServicesController extends Controller
         $brands = Brand::where('enable',1)->get();
         $ebrand = Brand::find($request->input('id'));
         $faqs = Faq::all();
+
+        $id = $request->input('id');
+        if ($id == 0) {
+            return view('welcome.pages.servicenew',compact('services','service','cmsText','brands','faqs','ebrand'));
+        }else{
         return view('welcome.pages.service',compact('services','service','cmsText','brands','faqs','ebrand'));
+        }
 
     }
 
