@@ -1,6 +1,6 @@
 # Mr. Plumber - Plumbing and Sanitation Services in India
 
-![Mr. Plumber Logo]([https://example.com/mr-plumber-logo.png](https://cdn5.vectorstock.com/i/1000x1000/95/64/plumbing-logo-design-creative-logo-vector-37079564.jpg))
+![Mr. Plumber Logo]([https://cdn5.vectorstock.com/i/1000x1000/95/64/plumbing-logo-design-creative-logo-vector-37079564.jpg])
 
 Welcome to the official GitHub repository of Mr. Plumber, a commercial website that offers top-notch plumbing and sanitation services in India. This website is built using Laravel 9, a powerful PHP web framework, to ensure a robust and efficient user experience. Mr. Plumber leverages data from reputable companies dealing with plumbing services, obtained from relevant public sources, to provide accurate and reliable information.
 
